@@ -1,0 +1,153 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Selection Application - Session Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .description {
+            background-color: #e7f3ff;
+            padding: 20px;
+            border: 1px solid #b3d9ff;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .features {
+            margin: 30px 0;
+        }
+        .feature-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+        .secondary-btn {
+            background-color: #2196F3;
+        }
+        .secondary-btn:hover {
+            background-color: #0b7dda;
+        }
+        .session-status {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .assignment-info {
+            background-color: #d4edda;
+            padding: 15px;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Selection Application</h1>
+        <h2 style="text-align: center; color: #666;">Session Management Demo</h2>
+        
+        <div class="assignment-info">
+            <p><strong>Assignment Requirements:</strong> This application demonstrates session management by allowing users to select cars from a multiselect list, store them in a session array, display the selected cars, and provide options to clear selections.</p>
+        </div>
+        
+        <div class="session-status">
+            <p><strong>Session Status:</strong> 
+                <?php if (session_status() == PHP_SESSION_ACTIVE): ?>
+                    <span style="color: green;">Active</span> (Session ID: <?php echo session_id(); ?>)
+                <?php else: ?>
+                    <span style="color: red;">Inactive</span>
+                <?php endif; ?>
+            </p>
+            <?php if (isset($_SESSION['selected_cars'])): ?>
+                <p><strong>Currently Selected Cars:</strong> <?php echo count($_SESSION['selected_cars']); ?> car(s)</p>
+            <?php endif; ?>
+        </div>
+        
+        <div class="description">
+            <p><strong>Welcome to the Car Selection Application!</strong></p>
+            <p>This application demonstrates PHP session management by allowing you to:</p>
+            <ul>
+                <li>Select multiple cars from a list of 7 automobiles</li>
+                <li>Store your selections in a PHP session array</li>
+                <li>View your selected cars on a separate display page</li>
+                <li>Clear your selections when needed</li>
+                <li>Navigate between pages while maintaining your session data</li>
+            </ul>
+        </div>
+        
+        <div class="features">
+            <h3>Application Features:</h3>
+            <div class="feature-item">
+                <strong>Car Selection Page:</strong> Choose from 7 different automobiles using a multiselect interface
+            </div>
+            <div class="feature-item">
+                <strong>Session Storage:</strong> Selected cars are stored in $_SESSION['selected_cars'] array
+            </div>
+            <div class="feature-item">
+                <strong>Car Display Page:</strong> View all your selected cars with clear formatting
+            </div>
+            <div class="feature-item">
+                <strong>Clear Function:</strong> Option to clear all current car selections
+            </div>
+            <div class="feature-item">
+                <strong>Navigation:</strong> Easy links to move between selection and display pages
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="car_selection.php" class="nav-button">Start Car Selection</a>
+            <a href="car_display.php" class="nav-button secondary-btn">View Selected Cars</a>
+        </div>
+        
+        <div class="description">
+            <p><strong>Technical Implementation:</strong></p>
+            <p>It sows how web applications can preserve user data during their browsing session.</p>
+        </div>
+    </div>
+</body>
+</html>
